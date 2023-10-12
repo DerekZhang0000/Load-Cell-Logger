@@ -3,6 +3,7 @@ import csv
 import keyboard
 from datetime import datetime
 
+# use the port that the Arduino is connected to
 port_name = 'COM3'
 serial_conn = serial.Serial(port_name, 57600)
 csv_file_name = f"load_cell_data_{datetime.now().date()}.csv"
@@ -25,7 +26,7 @@ keyboard.on_press_key("q", lambda _: quit())
 
 with open(csv_file_name, 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(["Timestamp", "Load Value (g)"])
+    writer.writerow(["Timestamp", "Load Value (kg)"])
     print(f"Logging to {csv_file_name}...")
 
     while True:

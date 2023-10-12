@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "HX711.h"
 
-// HX711 circuit wiring
+//  any digital pins can be used
 const int LOADCELL_DOUT_PIN = 12;
 const int LOADCELL_SCK_PIN = 13;
 
@@ -16,12 +16,13 @@ void setup() {
   Serial.print("pre-calibration read: \t\t");
   Serial.println(scale.read());
 
-  float calibration_val = 0;
-//  scale.set_scale(calibration_number);
-//  scale.tare();               // reset the scale to 0
+//  calibration_factor = (reading)/(known weight)
+//  float calibration_factor = -282642 / 11;
+//  scale.set_scale(calibration_factor);
+//  scale.tare();
 
   Serial.print("post-calibration read: \t\t");
-  Serial.println(scale.read());
+  Serial.println(scale.get_units(), 1);
   Serial.println("setup done");
 }
 
